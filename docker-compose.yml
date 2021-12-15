@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nodejs-typescript
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+
+  db:
+    image: 'mongo'
+    container_name: typescript-mongodb
+    ports:
+      - '27017:27017'
+    volumes:
+      - /data/db
